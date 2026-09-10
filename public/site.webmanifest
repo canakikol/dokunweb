@@ -1,0 +1,17 @@
+{
+  "name": "DOKUN — Akıllı Sadakat Platformu",
+  "short_name": "DOKUN",
+  "description": "Fiziksel işletmeler için yeni nesil NFC ve QR sadakat platformu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16A36A",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
