@@ -23,21 +23,23 @@ export const useLanguage = create<LanguageStore>()(
         }
         set({
           language: lang,
-          t: translations[lang] as unknown as Translations,
+          t: (translations[lang] || translations.tr) as unknown as Translations,
         });
       },
     }),
     {
       name: "dokun_lang",
       partialize: (state) => ({ language: state.language }),
-      onRehydrateStorage: () => (state) => {
-        if (state) {
-          const lang = state.language;
-          state.t = translations[lang] as unknown as Translations;
-          if (typeof document !== "undefined") {
-            document.documentElement.lang = lang;
-          }
+      merge: (persistedState: any, currentState) => {
+        const lang = (persistedState?.language as LanguageCode) || "tr";
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = lang;
         }
+        return {
+          ...currentState,
+          language: lang,
+          t: (translations[lang] || translations.tr) as unknown as Translations,
+        };
       },
     }
   )
