@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight, ArrowLeft } from "lucide-react";
 import { ROUTES } from "@/components/config/routes";
+import { LanguageSelector } from "@/components/ui/LanguageSelector";
 
 const businessNavLinks = [
   { label: "Nasıl Çalışır?", href: "#nasil-calisir" },
@@ -81,6 +82,7 @@ export function BusinessNavbar() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSelector variant="dark" />
             <Link
               href={ROUTES.club}
               className="text-xs font-medium text-[#9CA3AF] hover:text-white transition-colors px-2 py-1"
@@ -97,14 +99,17 @@ export function BusinessNavbar() {
             </a>
           </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden p-2 rounded-xl text-[#9CA3AF] hover:bg-white/10 hover:text-white transition-all"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Menüyü Kapat" : "Menüyü Aç"}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile menu toggle & Language */}
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSelector variant="dark" />
+            <button
+              className="p-2 rounded-xl text-[#9CA3AF] hover:bg-white/10 hover:text-white transition-all"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Menüyü Kapat" : "Menüyü Aç"}
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
       </header>
 

@@ -77,6 +77,8 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
+import { Providers } from "@/components/layout/Providers";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -89,7 +91,9 @@ export default function RootLayout({ children }: LayoutProps) {
         <meta name="color-scheme" content="light" />
       </head>
       <body className="min-h-full flex flex-col bg-white text-[#0a0a0a]">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { 
   ArrowRight, 
-  Store, 
-  User, 
   ShieldCheck, 
   Zap, 
   Sparkles, 
@@ -13,8 +11,12 @@ import {
 } from "lucide-react";
 import { ROUTES } from "@/components/config/routes";
 import { RealisticIcon } from "@/components/ui/RealisticIcon";
+import { LanguageSelector } from "@/components/ui/LanguageSelector";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-[#FBFBFB] text-[#111827] flex flex-col justify-between selection:bg-[#16A36A]/20 selection:text-[#16A36A] relative overflow-hidden">
       {/* Subtle ambient lighting */}
@@ -41,10 +43,11 @@ export default function HomePage() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-xs font-medium text-[#4B5563] shadow-xs">
+          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-xs font-medium text-[#4B5563] shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#16A36A] animate-pulse" />
-            <span>NFC & QR Platformu Aktif</span>
+            <span>{t.nav.activeNfc}</span>
           </div>
+          <LanguageSelector variant="pill" />
         </div>
       </header>
 
@@ -59,7 +62,7 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-xs font-semibold text-[#16A36A] shadow-xs mb-4"
           >
             <Sparkles size={13} />
-            <span>Kullanıcı Tipi Seçimi</span>
+            <span>{t.home.userTypeBadge}</span>
           </motion.div>
 
           <motion.h1
@@ -68,7 +71,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#111827] tracking-tight leading-tight mb-4"
           >
-            Sen DOKUN&apos;u nasıl kullanıyorsun?
+            {t.home.title}
           </motion.h1>
 
           <motion.p
@@ -77,7 +80,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.18 }}
             className="text-base sm:text-lg text-[#6B7280] leading-relaxed"
           >
-            İşletmen için müşterilerini yönet veya DOKUN Club ile ödüllerini takip et.
+            {t.home.subtitle}
           </motion.p>
         </div>
 
@@ -100,20 +103,20 @@ export default function HomePage() {
                   <div className="inline-flex items-center gap-2.5 bg-[#16A36A]/15 border border-[#16A36A]/30 px-3.5 py-1.5 rounded-xl">
                     <RealisticIcon name="store" size={20} />
                     <span className="text-xs font-bold text-white tracking-wider uppercase">
-                      İŞLETMEYİM
+                      {t.home.businessCard.badge}
                     </span>
                   </div>
                   <span className="text-[11px] font-mono text-[#9CA3AF] bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
-                    B2B & SaaS
+                    {t.home.businessCard.type}
                   </span>
                 </div>
 
                 {/* Pitch */}
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug mb-3">
-                  &ldquo;Müşterilerimi tanımak, sadakat oluşturmak ve tekrar ziyaretleri artırmak istiyorum.&rdquo;
+                  {t.home.businessCard.pitch}
                 </h2>
                 <p className="text-sm text-[#9CA3AF] leading-relaxed mb-6">
-                  DOKUN Stand donanımı, bulut CRM, müşteri segmentasyonu ve otomatik kampanya motoruyla mağazanızın cirosunu sürdürülebilir kılın.
+                  {t.home.businessCard.desc}
                 </p>
 
                 {/* Real Photo + Dashboard Metrics Hybrid Preview */}
@@ -129,10 +132,10 @@ export default function HomePage() {
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
                       <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
                         <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                        <span className="font-bold text-white text-[11px]">Canlı Kasa & Masa Ekranı</span>
+                        <span className="font-bold text-white text-[11px]">{t.home.businessCard.liveScreen}</span>
                       </div>
                       <span className="text-[10px] text-[#A7F3D0] font-mono bg-[#065F46]/80 px-2 py-0.5 rounded border border-[#10B981]/30">
-                        NFC & Bulut POS
+                        {t.home.businessCard.hardwareTag}
                       </span>
                     </div>
                   </div>
@@ -140,19 +143,19 @@ export default function HomePage() {
                   <div className="p-4">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
                       <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-[#9CA3AF]">Toplam Müşteri</div>
+                        <div className="text-[10px] text-[#9CA3AF]">{t.home.businessCard.totalCustomers}</div>
                         <div className="text-base font-bold text-white mt-0.5">1.248</div>
                       </div>
                       <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-[#9CA3AF]">Bugünkü Ziyaret</div>
+                        <div className="text-[10px] text-[#9CA3AF]">{t.home.businessCard.todayVisits}</div>
                         <div className="text-base font-bold text-white mt-0.5">86</div>
                       </div>
                       <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-[#9CA3AF]">Aktif Sadakat</div>
+                        <div className="text-[10px] text-[#9CA3AF]">{t.home.businessCard.activeLoyalty}</div>
                         <div className="text-base font-bold text-[#10B981] mt-0.5">734</div>
                       </div>
                       <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-[#9CA3AF]">30+ Gün Risk</div>
+                        <div className="text-[10px] text-[#9CA3AF]">{t.home.businessCard.atRisk}</div>
                         <div className="text-base font-bold text-[#EF4444] mt-0.5">92</div>
                       </div>
                     </div>
@@ -163,19 +166,19 @@ export default function HomePage() {
                 <div className="grid grid-cols-2 gap-2 text-xs text-[#D1D5DB] mb-6">
                   <div className="flex items-center gap-2">
                     <RealisticIcon name="nfc" size={16} />
-                    <span>NFC Stand Donanımı</span>
+                    <span>{t.home.businessCard.nfcHardware}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <RealisticIcon name="chart" size={16} />
-                    <span>Bulut Müşteri CRM</span>
+                    <span>{t.home.businessCard.crm}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <RealisticIcon name="trophy" size={16} />
-                    <span>Sadakat & Ödül Motoru</span>
+                    <span>{t.home.businessCard.loyaltyEngine}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <RealisticIcon name="target" size={16} />
-                    <span>Otomatik Kampanyalar</span>
+                    <span>{t.home.businessCard.campaigns}</span>
                   </div>
                 </div>
               </div>
@@ -183,9 +186,9 @@ export default function HomePage() {
               {/* Action Button */}
               <div className="pt-5 border-t border-white/10 flex items-center justify-between">
                 <div>
-                  <div className="text-[11px] text-[#9CA3AF]">Kurulum 5 dk · Komisyonsuz</div>
+                  <div className="text-[11px] text-[#9CA3AF]">{t.home.businessCard.footerInfo}</div>
                   <div className="text-xs font-bold text-white group-hover:text-[#16A36A] transition-colors">
-                    İşletme Çözümlerini İncele
+                    {t.home.businessCard.footerSubtitle}
                   </div>
                 </div>
 
@@ -193,7 +196,7 @@ export default function HomePage() {
                   href={ROUTES.business}
                   className="inline-flex items-center gap-2 h-12 px-6 rounded-2xl bg-[#16A36A] hover:bg-[#12916A] text-white text-xs font-bold transition-all shadow-lg shadow-[#16A36A]/25 hover:scale-[1.03]"
                 >
-                  <span>İşletme Olarak Devam Et</span>
+                  <span>{t.home.businessCard.cta}</span>
                   <ArrowRight size={15} />
                 </Link>
               </div>
@@ -217,20 +220,20 @@ export default function HomePage() {
                   <div className="inline-flex items-center gap-2.5 bg-[#F4FBF7] border border-[#16A36A]/30 px-3.5 py-1.5 rounded-xl">
                     <RealisticIcon name="user" size={20} />
                     <span className="text-xs font-bold text-[#16A36A] tracking-wider uppercase">
-                      MÜŞTERİYİM
+                      {t.home.customerCard.badge}
                     </span>
                   </div>
                   <span className="text-[11px] font-mono text-[#6B7280] bg-[#F3F4F6] px-2.5 py-1 rounded-lg">
-                    DOKUN CLUB
+                    {t.home.customerCard.type}
                   </span>
                 </div>
 
                 {/* Pitch */}
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[#111827] tracking-tight leading-snug mb-3">
-                  &ldquo;DOKUN Club&apos;a katılmak, puanlarımı ve ödüllerimi takip etmek istiyorum.&rdquo;
+                  {t.home.customerCard.pitch}
                 </h2>
                 <p className="text-sm text-[#6B7280] leading-relaxed mb-6">
-                  Uygulama indirmeden, standa telefonunuzu dokundurarak favori işletmelerinizde puan toplayın ve ücretsiz hediyelerin tadını çıkarın.
+                  {t.home.customerCard.desc}
                 </p>
 
                 {/* Real Photo + Digital Wallet Pass Card */}
@@ -247,23 +250,23 @@ export default function HomePage() {
                       <div className="flex items-center gap-2">
                         <RealisticIcon name="coffee" size={22} />
                         <div>
-                          <div className="text-xs font-bold leading-tight">ABC Coffee Club</div>
-                          <div className="text-[10px] text-white/80">Dokun ve Damga Kazan</div>
+                          <div className="text-xs font-bold leading-tight">{t.home.customerCard.coffeeCardTitle}</div>
+                          <div className="text-[10px] text-white/80">{t.home.customerCard.coffeeCardSubtitle}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-1 bg-[#10B981] text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
                         <RealisticIcon name="gift" size={14} />
-                        <span>8 / 10 Damga</span>
+                        <span>{t.home.customerCard.stamps}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-[#059669] text-white p-3.5 flex items-center justify-between">
                     <div className="text-xs">
-                      <span className="font-semibold">Sıradaki Ödül:</span> Ücretsiz Latte
+                      <span className="font-semibold">{t.home.customerCard.nextReward}</span>
                     </div>
                     <div className="text-[10px] bg-white text-[#059669] font-bold px-2 py-0.5 rounded-full shadow-xs">
-                      2 Damga Kaldı
+                      {t.home.customerCard.stampsRemaining}
                     </div>
                   </div>
                 </div>
@@ -272,15 +275,15 @@ export default function HomePage() {
                 <div className="space-y-2.5 text-xs text-[#4B5563] mb-6">
                   <div className="flex items-center gap-1.5">
                     <Check size={14} className="text-[#16A36A]" />
-                    <span>Uygulama indirme zorunluluğu yok</span>
+                    <span>{t.home.customerCard.benefit1}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Check size={14} className="text-[#16A36A]" />
-                    <span>Tek hesap ile yüzlerce farklı işletme</span>
+                    <span>{t.home.customerCard.benefit2}</span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Check size={14} className="text-[#16A36A]" />
-                    <span>Kasadaki dinamik QR ile anında ödül kullanımı</span>
+                    <span>{t.home.customerCard.benefit3}</span>
                   </div>
                 </div>
               </div>
@@ -288,9 +291,9 @@ export default function HomePage() {
               {/* Action Button */}
               <div className="pt-5 border-t border-[#E5E7EB] flex items-center justify-between">
                 <div>
-                  <div className="text-[11px] text-[#6B7280]">Ücretsiz üyelik</div>
+                  <div className="text-[11px] text-[#6B7280]">{t.home.customerCard.footerInfo}</div>
                   <div className="text-xs font-bold text-[#111827] group-hover:text-[#16A36A] transition-colors">
-                    Ödüllerinizi Görüntüleyin
+                    {t.home.customerCard.footerSubtitle}
                   </div>
                 </div>
 
@@ -298,7 +301,7 @@ export default function HomePage() {
                   href={ROUTES.club}
                   className="inline-flex items-center gap-2 h-12 px-6 rounded-2xl bg-[#F4FBF7] border border-[#16A36A]/30 hover:bg-[#16A36A] hover:text-white text-[#16A36A] text-xs font-bold transition-all shadow-xs"
                 >
-                  <span>DOKUN Club&apos;a Git</span>
+                  <span>{t.home.customerCard.cta}</span>
                   <ArrowRight size={15} />
                 </Link>
               </div>
@@ -312,18 +315,18 @@ export default function HomePage() {
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-1.5">
             <ShieldCheck size={14} className="text-[#16A36A]" />
-            <span>KVKK & %100 Veri İzolasyonu</span>
+            <span>{t.home.footer.kvkk}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Zap size={14} className="text-[#16A36A]" />
-            <span>NFC & QR Çift Teknoloji</span>
+            <span>{t.home.footer.tech}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
           <Link href={ROUTES.kvkk} className="hover:text-[#111827] transition-colors">KVKK</Link>
-          <Link href={ROUTES.gizlilik} className="hover:text-[#111827] transition-colors">Gizlilik Politikası</Link>
-          <Link href={ROUTES.iletisim} className="hover:text-[#111827] transition-colors">İletişim</Link>
+          <Link href={ROUTES.gizlilik} className="hover:text-[#111827] transition-colors">{t.home.footer.privacy}</Link>
+          <Link href={ROUTES.iletisim} className="hover:text-[#111827] transition-colors">{t.home.footer.contact}</Link>
         </div>
       </footer>
     </div>

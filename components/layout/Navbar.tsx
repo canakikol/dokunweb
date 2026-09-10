@@ -5,17 +5,20 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ROUTES } from "@/components/config/routes";
-
-const navLinks = [
-  { label: "Nedir?", href: ROUTES.nedir },
-  { label: "DOKUN Club", href: ROUTES.dokun_club },
-  { label: "Nasıl Çalışır?", href: ROUTES.nasil },
-  { label: "İşletmeler", href: ROUTES.isletmeler },
-];
+import { LanguageSelector } from "@/components/ui/LanguageSelector";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.whatIs, href: ROUTES.nedir },
+    { label: t.nav.club, href: ROUTES.dokun_club },
+    { label: t.nav.howItWorks, href: ROUTES.nasil },
+    { label: t.nav.businesses, href: ROUTES.isletmeler },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 16);
@@ -73,31 +76,29 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA & Language */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href={ROUTES.clubLogin}
-              className="text-sm font-medium text-[#4B5563] hover:text-[#0a0a0a] transition-colors px-3 py-2"
-            >
-              Giriş Yap
-            </Link>
+            <LanguageSelector variant="pill" />
             <Link
               href={ROUTES.clubJoin}
               className="h-9 px-5 bg-[#16A36A] text-white text-sm font-semibold rounded-xl hover:bg-[#12916A] transition-all duration-200 hover:scale-[1.02] shadow-sm flex items-center"
             >
-              Club&apos;a Katıl
+              {t.nav.joinClub}
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-xl text-[#4B5563] hover:bg-[#F4FBF7] hover:text-[#0a0a0a] transition-all"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Menüyü Kapat" : "Menüyü Aç"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile hamburger & language */}
+          <div className="flex items-center gap-2 md:hidden">
+            <LanguageSelector variant="compact" />
+            <button
+              className="p-2 rounded-xl text-[#4B5563] hover:bg-[#F4FBF7] hover:text-[#0a0a0a] transition-all"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Menüyü Kapat" : "Menüyü Aç"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -124,18 +125,11 @@ export function Navbar() {
               ))}
               <div className="h-px bg-[#E5E7EB] my-2" />
               <Link
-                href={ROUTES.clubLogin}
-                className="px-4 py-3 text-sm font-medium text-[#4B5563] hover:bg-[#F4FBF7] rounded-xl transition-all"
-                onClick={() => setMobileOpen(false)}
-              >
-                Giriş Yap
-              </Link>
-              <Link
                 href={ROUTES.clubJoin}
                 className="mx-0 py-3 bg-[#16A36A] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#12916A] transition-all"
                 onClick={() => setMobileOpen(false)}
               >
-                DOKUN Club&apos;a Katıl
+                {t.nav.joinClub}
               </Link>
             </div>
           </motion.div>
