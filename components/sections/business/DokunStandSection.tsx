@@ -12,6 +12,7 @@ import {
   CreditCard,
   Gift
 } from "lucide-react";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 const standSteps = [
   {
@@ -89,19 +90,25 @@ export function DokunStandSection() {
                   <span className="text-xs font-mono text-[#9CA3AF]">NFC + QR Çift Çip</span>
                 </div>
 
-                {/* Stand Visual Representation */}
-                <div className="bg-gradient-to-b from-white/10 to-white/[0.02] border border-white/10 rounded-2xl p-6 mb-6 text-center">
-                  <div className="w-20 h-28 mx-auto mb-4 bg-gradient-to-b from-[#2A2B30] to-[#121316] rounded-xl border border-white/20 shadow-2xl flex flex-col items-center justify-between p-3 relative">
-                    <div className="w-8 h-8 rounded-full bg-[#16A36A]/20 border border-[#16A36A]/40 flex items-center justify-center text-[#16A36A]">
-                      <Radio size={16} className="animate-pulse" />
-                    </div>
-                    <div className="text-[9px] font-black tracking-widest text-white">DOKUN</div>
-                    <div className="w-6 h-6 rounded bg-white/10 flex items-center justify-center text-[8px] text-[#9CA3AF]">
-                      QR
+                {/* Stand Realistic Product Photography */}
+                <div className="relative rounded-2xl overflow-hidden mb-6 border border-white/10 shadow-2xl group">
+                  <div className="relative h-60 w-full overflow-hidden bg-black">
+                    <img 
+                      src="/images/dokun-stand-hardware.jpg" 
+                      alt="DOKUN Akıllı Masa & Kasa Standı Donanımı"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <RealisticIcon name="nfc" size={20} />
+                        <span className="text-xs font-bold text-white">Lüks Alüminyum & Masif Ceviz Taban</span>
+                      </div>
+                      <span className="text-[10px] font-bold bg-[#10B981] text-white px-2 py-0.5 rounded-md">
+                        Pil / Kablo Gerektirmez
+                      </span>
                     </div>
                   </div>
-                  <div className="text-xs font-semibold text-white">Lüks Akrilik & Mat Bitiş</div>
-                  <div className="text-[11px] text-[#9CA3AF]">Pil veya kablo gerektirmez, daima aktif</div>
                 </div>
 
                 {/* Live POS Screen Preview ("Son Dokunanlar") */}

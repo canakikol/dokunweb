@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { QrCode, Check } from "lucide-react";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 const timelineSteps = [
   {
@@ -160,37 +161,60 @@ export function ScenarioSection() {
                 puanı biriktiriyor. 10 kahvede bir ücretsiz kahve kazanıyor.
               </p>
 
-              {/* App preview */}
-              <div className="bg-[#F4FBF7] rounded-3xl p-6 border border-[#16A36A]/10">
-                <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-4">
-                  Club Uygulaması
-                </div>
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <div className="text-sm font-bold text-[#0a0a0a]">ABC Coffee</div>
-                    <div className="text-xs text-[#9CA3AF]">10 ziyarette 1 ücretsiz</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-xl font-bold text-[#16A36A]">10 / 10</div>
-                    <div className="text-[10px] text-[#9CA3AF]">tamamlandı</div>
-                  </div>
-                </div>
-
-                {/* Stamp dots */}
-                <div className="flex gap-1.5 mb-5 flex-wrap">
-                  {Array.from({ length: 10 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-7 h-7 rounded-full bg-[#16A36A] flex items-center justify-center"
-                    >
-                      <Check size={11} className="text-white" strokeWidth={3} />
+              {/* Real Cafe Lifestyle + App Preview Card */}
+              <div className="bg-[#F4FBF7] rounded-3xl overflow-hidden border border-[#16A36A]/20 shadow-xl">
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img 
+                    src="/images/dokun-tap-hero.jpg" 
+                    alt="Mehmet ABC Coffee Dokunuşu" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#047857]/90 via-[#047857]/40 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                    <div className="flex items-center gap-2">
+                      <RealisticIcon name="coffee" size={24} />
+                      <div>
+                        <div className="text-xs font-bold">ABC Specialty Coffee</div>
+                        <div className="text-[10px] text-white/80">Kasadaki Anlık Dokunuş</div>
+                      </div>
                     </div>
-                  ))}
+                    <span className="text-[10px] bg-white text-[#047857] font-bold px-2.5 py-1 rounded-full">
+                      Hedef Tamamlandı
+                    </span>
+                  </div>
                 </div>
 
-                <div className="bg-[#16A36A] rounded-2xl py-3 text-center">
-                  <div className="text-white text-sm font-bold">Ücretsiz kahve kazandın</div>
-                  <div className="text-white/70 text-xs mt-0.5">Ödülü Kullan →</div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <div className="text-sm font-bold text-[#0a0a0a]">Mehmet Yılmaz</div>
+                      <div className="text-xs text-[#6B7280]">10 ziyarette 1 ücretsiz kahve</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xl font-bold text-[#16A36A]">10 / 10</div>
+                      <div className="text-[10px] font-semibold text-[#16A36A]">Hazır</div>
+                    </div>
+                  </div>
+
+                  {/* Stamp dots */}
+                  <div className="flex gap-2 mb-5 flex-wrap">
+                    {Array.from({ length: 10 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-8 h-8 rounded-full bg-[#16A36A] flex items-center justify-center shadow-xs"
+                      >
+                        <Check size={13} className="text-white" strokeWidth={3} />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-[#16A36A] hover:bg-[#12916A] transition-colors rounded-2xl py-3 px-4 flex items-center justify-between shadow-md shadow-[#16A36A]/20">
+                    <div className="flex items-center gap-2 text-white">
+                      <RealisticIcon name="gift" size={20} />
+                      <span className="text-sm font-bold">Ücretsiz Filtre Kahve</span>
+                    </div>
+                    <span className="text-white/90 text-xs font-medium">QR ile Kullan →</span>
+                  </div>
                 </div>
               </div>
             </div>

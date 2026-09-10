@@ -12,6 +12,7 @@ import {
   Check
 } from "lucide-react";
 import { ROUTES } from "@/components/config/routes";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 export default function HomePage() {
   return (
@@ -96,10 +97,10 @@ export default function HomePage() {
               <div>
                 {/* Header Badge */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="inline-flex items-center gap-2 bg-[#16A36A]/20 border border-[#16A36A]/40 px-3.5 py-1.5 rounded-xl">
-                    <Store size={15} className="text-[#16A36A]" />
+                  <div className="inline-flex items-center gap-2.5 bg-[#16A36A]/15 border border-[#16A36A]/30 px-3.5 py-1.5 rounded-xl">
+                    <RealisticIcon name="store" size={20} />
                     <span className="text-xs font-bold text-white tracking-wider uppercase">
-                      🏪 İŞLETMEYİM
+                      İŞLETMEYİM
                     </span>
                   </div>
                   <span className="text-[11px] font-mono text-[#9CA3AF] bg-white/5 border border-white/10 px-2.5 py-1 rounded-lg">
@@ -115,57 +116,65 @@ export default function HomePage() {
                   DOKUN Stand donanımı, bulut CRM, müşteri segmentasyonu ve otomatik kampanya motoruyla mağazanızın cirosunu sürdürülebilir kılın.
                 </p>
 
-                {/* Live Demo Dashboard Preview */}
-                <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-4 sm:p-5 mb-6 backdrop-blur-md">
-                  <div className="flex items-center justify-between text-xs pb-3 mb-3 border-b border-white/10">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#16A36A] animate-pulse" />
-                      <span className="font-bold text-white">DOKUN PRO Canlı Panel</span>
-                    </div>
-                    <span className="text-[10px] text-[#9CA3AF] font-mono">DEMO UI</span>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-3">
-                    <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                      <div className="text-[10px] text-[#9CA3AF]">Toplam Müşteri</div>
-                      <div className="text-lg font-bold text-white mt-0.5">1.248</div>
-                    </div>
-                    <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                      <div className="text-[10px] text-[#9CA3AF]">Bugünkü Ziyaret</div>
-                      <div className="text-lg font-bold text-white mt-0.5">86</div>
-                    </div>
-                    <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                      <div className="text-[10px] text-[#9CA3AF]">Aktif Sadakat</div>
-                      <div className="text-lg font-bold text-[#16A36A] mt-0.5">734</div>
-                    </div>
-                    <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
-                      <div className="text-[10px] text-[#9CA3AF]">30+ Gün Gelmeyen</div>
-                      <div className="text-lg font-bold text-[#EF4444] mt-0.5">92</div>
+                {/* Real Photo + Dashboard Metrics Hybrid Preview */}
+                <div className="bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden mb-6 backdrop-blur-md">
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <img 
+                      src="/images/dokun-pos-dashboard.jpg" 
+                      alt="DOKUN PRO Kasa & Tablet Canlı Panel" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E0F12] via-[#0E0F12]/60 to-transparent" />
+                    
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+                        <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                        <span className="font-bold text-white text-[11px]">Canlı Kasa & Masa Ekranı</span>
+                      </div>
+                      <span className="text-[10px] text-[#A7F3D0] font-mono bg-[#065F46]/80 px-2 py-0.5 rounded border border-[#10B981]/30">
+                        NFC & Bulut POS
+                      </span>
                     </div>
                   </div>
 
-                  <div className="text-[11px] text-[#D1D5DB] bg-white/[0.02] px-3 py-2 rounded-xl border border-white/5 flex items-center justify-between">
-                    <span className="truncate">Mehmet Yılmaz · 8/10 kahve · 4 gün önce</span>
-                    <span className="text-[10px] font-semibold text-[#16A36A] shrink-0 ml-2">Kurtarılabilir Kitle</span>
+                  <div className="p-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
+                      <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
+                        <div className="text-[10px] text-[#9CA3AF]">Toplam Müşteri</div>
+                        <div className="text-base font-bold text-white mt-0.5">1.248</div>
+                      </div>
+                      <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
+                        <div className="text-[10px] text-[#9CA3AF]">Bugünkü Ziyaret</div>
+                        <div className="text-base font-bold text-white mt-0.5">86</div>
+                      </div>
+                      <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
+                        <div className="text-[10px] text-[#9CA3AF]">Aktif Sadakat</div>
+                        <div className="text-base font-bold text-[#10B981] mt-0.5">734</div>
+                      </div>
+                      <div className="bg-white/[0.03] p-2.5 rounded-xl border border-white/5">
+                        <div className="text-[10px] text-[#9CA3AF]">30+ Gün Risk</div>
+                        <div className="text-base font-bold text-[#EF4444] mt-0.5">92</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Key Benefits */}
                 <div className="grid grid-cols-2 gap-2 text-xs text-[#D1D5DB] mb-6">
-                  <div className="flex items-center gap-1.5">
-                    <Check size={14} className="text-[#16A36A]" />
+                  <div className="flex items-center gap-2">
+                    <RealisticIcon name="nfc" size={16} />
                     <span>NFC Stand Donanımı</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check size={14} className="text-[#16A36A]" />
+                  <div className="flex items-center gap-2">
+                    <RealisticIcon name="chart" size={16} />
                     <span>Bulut Müşteri CRM</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check size={14} className="text-[#16A36A]" />
+                  <div className="flex items-center gap-2">
+                    <RealisticIcon name="trophy" size={16} />
                     <span>Sadakat & Ödül Motoru</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check size={14} className="text-[#16A36A]" />
+                  <div className="flex items-center gap-2">
+                    <RealisticIcon name="target" size={16} />
                     <span>Otomatik Kampanyalar</span>
                   </div>
                 </div>
@@ -205,10 +214,10 @@ export default function HomePage() {
               <div>
                 {/* Header Badge */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="inline-flex items-center gap-2 bg-[#F4FBF7] border border-[#16A36A]/30 px-3.5 py-1.5 rounded-xl">
-                    <User size={15} className="text-[#16A36A]" />
+                  <div className="inline-flex items-center gap-2.5 bg-[#F4FBF7] border border-[#16A36A]/30 px-3.5 py-1.5 rounded-xl">
+                    <RealisticIcon name="user" size={20} />
                     <span className="text-xs font-bold text-[#16A36A] tracking-wider uppercase">
-                      👤 MÜŞTERİYİM
+                      MÜŞTERİYİM
                     </span>
                   </div>
                   <span className="text-[11px] font-mono text-[#6B7280] bg-[#F3F4F6] px-2.5 py-1 rounded-lg">
@@ -224,45 +233,43 @@ export default function HomePage() {
                   Uygulama indirmeden, standa telefonunuzu dokundurarak favori işletmelerinizde puan toplayın ve ücretsiz hediyelerin tadını çıkarın.
                 </p>
 
-                {/* Apple Wallet Style Pass Card */}
-                <div className="bg-gradient-to-br from-[#16A36A] to-[#0E7A4E] text-white rounded-2xl p-5 mb-6 shadow-md shadow-[#16A36A]/20 relative overflow-hidden">
-                  <div className="flex items-center justify-between text-xs pb-3 mb-3 border-b border-white/20">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm">☕</span>
-                      <span className="font-bold">ABC Coffee Club</span>
-                    </div>
-                    <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-md font-semibold">
-                      DOKUN PASS
-                    </span>
-                  </div>
-
-                  <div className="flex items-end justify-between mb-3">
-                    <div>
-                      <div className="text-[11px] text-white/80">Sadakat Kartım</div>
-                      <div className="text-2xl font-black">8 / 10 Kahve</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-[11px] font-bold bg-white text-[#16A36A] px-2.5 py-1 rounded-lg shadow-xs">
-                        2 Kahve Kaldı 🎁
+                {/* Real Photo + Digital Wallet Pass Card */}
+                <div className="relative rounded-2xl overflow-hidden mb-6 border border-[#E5E7EB] shadow-md group-hover:shadow-lg transition-shadow">
+                  <div className="h-40 w-full relative overflow-hidden bg-gray-100">
+                    <img 
+                      src="/images/dokun-tap-hero.jpg" 
+                      alt="DOKUN Club Gerçek Deneyim" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                    
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                      <div className="flex items-center gap-2">
+                        <RealisticIcon name="coffee" size={22} />
+                        <div>
+                          <div className="text-xs font-bold leading-tight">ABC Coffee Club</div>
+                          <div className="text-[10px] text-white/80">Dokun ve Damga Kazan</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 bg-[#10B981] text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                        <RealisticIcon name="gift" size={14} />
+                        <span>8 / 10 Damga</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Stamp row */}
-                  <div className="flex gap-1.5 pt-1">
-                    {Array.from({ length: 10 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className={`h-2 flex-1 rounded-full ${
-                          i < 8 ? "bg-white" : "bg-white/30"
-                        }`}
-                      />
-                    ))}
+                  <div className="bg-[#059669] text-white p-3.5 flex items-center justify-between">
+                    <div className="text-xs">
+                      <span className="font-semibold">Sıradaki Ödül:</span> Ücretsiz Latte
+                    </div>
+                    <div className="text-[10px] bg-white text-[#059669] font-bold px-2 py-0.5 rounded-full shadow-xs">
+                      2 Damga Kaldı
+                    </div>
                   </div>
                 </div>
 
                 {/* Member Highlights */}
-                <div className="space-y-2 text-xs text-[#4B5563] mb-6">
+                <div className="space-y-2.5 text-xs text-[#4B5563] mb-6">
                   <div className="flex items-center gap-1.5">
                     <Check size={14} className="text-[#16A36A]" />
                     <span>Uygulama indirme zorunluluğu yok</span>

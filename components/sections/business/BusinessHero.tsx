@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Zap, Sparkles, CheckCircle2 } from "lucide-react";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 export function BusinessHero() {
   return (
@@ -118,7 +119,7 @@ export function BusinessHero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Premium DOKUN PRO Dashboard Mockup */}
+          {/* Right Column: Realistic DOKUN PRO POS & Counter Showcase */}
           <div className="lg:col-span-5 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 24 }}
@@ -127,156 +128,97 @@ export function BusinessHero() {
               className="relative"
             >
               {/* Outer Glow container */}
-              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 via-white/[0.03] to-transparent p-1 shadow-2xl shadow-black/80">
-                <div className="rounded-[22px] bg-[#111215] border border-white/10 overflow-hidden p-5 sm:p-6">
-                  {/* Top Bar */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-[#16A36A] flex items-center justify-center font-black text-white text-xs">
-                        D
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                          <span>DOKUN PRO</span>
-                          <span className="text-[9px] font-mono bg-white/10 text-[#9CA3AF] px-1.5 py-0.5 rounded">
-                            DEMO UI
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-[#9CA3AF]">ABC Coffee & Bakery</div>
-                      </div>
+              <div className="relative rounded-[32px] bg-gradient-to-b from-white/15 via-white/[0.05] to-transparent p-1 shadow-2xl shadow-black/80">
+                <div className="rounded-[28px] bg-[#111215] border border-white/10 overflow-hidden">
+                  {/* Real Photo of POS + Stand on Counter */}
+                  <div className="relative h-64 sm:h-72 w-full overflow-hidden">
+                    <img 
+                      src="/images/dokun-pos-dashboard.jpg" 
+                      alt="DOKUN PRO Canlı Kasa ve Tablet Paneli" 
+                      className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111215] via-[#111215]/40 to-transparent" />
+                    
+                    {/* Live Indicator overlay */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
+                      <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                      <span className="text-xs font-bold text-white">DOKUN PRO Kasa & Masa</span>
                     </div>
-                    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#16A36A]/20 border border-[#16A36A]/30">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#16A36A] animate-pulse" />
-                      <span className="text-[10px] font-semibold text-[#16A36A]">Canlı</span>
+
+                    <div className="absolute top-4 right-4 bg-[#10B981]/20 border border-[#10B981]/40 px-2.5 py-1 rounded-lg backdrop-blur-md">
+                      <span className="text-[10px] font-mono text-[#6EE7B7] font-bold">NFC STAND DAHİL</span>
                     </div>
                   </div>
 
-                  {/* 4 Required Metric Cards */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3">
-                      <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
-                        Toplam Müşteri
+                  {/* 4 Required Live Metric Cards */}
+                  <div className="p-5">
+                    <div className="grid grid-cols-2 gap-2.5 mb-4">
+                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3">
+                        <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
+                          Toplam Müşteri
+                        </div>
+                        <div className="text-2xl font-bold text-white">1.248</div>
+                        <div className="text-[10px] text-[#10B981] font-medium mt-0.5">
+                          +18% bu ay
+                        </div>
                       </div>
-                      <div className="text-2xl font-bold text-white">1.248</div>
-                      <div className="text-[10px] text-[#16A36A] font-medium mt-0.5">
-                        +18% bu ay
+
+                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3">
+                        <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
+                          Bugünkü Ziyaret
+                        </div>
+                        <div className="text-2xl font-bold text-white">86</div>
+                        <div className="text-[10px] text-[#10B981] font-medium mt-0.5">
+                          14 sadakat kullanımı
+                        </div>
+                      </div>
+
+                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3">
+                        <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
+                          Aktif Sadakat
+                        </div>
+                        <div className="text-2xl font-bold text-[#10B981]">734</div>
+                        <div className="text-[10px] text-[#9CA3AF] font-medium mt-0.5">
+                          Düzenli müşteri
+                        </div>
+                      </div>
+
+                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3">
+                        <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
+                          30+ Gün Gelmeyen
+                        </div>
+                        <div className="text-2xl font-bold text-[#EF4444]">92</div>
+                        <div className="text-[10px] text-[#EF4444] font-medium mt-0.5">
+                          Kayıp riski
+                        </div>
                       </div>
                     </div>
 
-                    <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3">
-                      <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
-                        Bugünkü Ziyaret
+                    {/* Customer item badge */}
+                    <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3 flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-7 h-7 rounded-full bg-[#10B981]/20 text-[#10B981] font-bold text-[11px] flex items-center justify-center">
+                          MY
+                        </div>
+                        <div>
+                          <div className="text-white font-medium text-xs">Mehmet Yılmaz</div>
+                          <div className="text-[10px] text-[#9CA3AF]">8/10 kahve · 4 gün önce</div>
+                        </div>
                       </div>
-                      <div className="text-2xl font-bold text-white">86</div>
-                      <div className="text-[10px] text-[#16A36A] font-medium mt-0.5">
-                        14 sadakat kullanımı
-                      </div>
+                      <span className="text-[10px] font-bold bg-[#10B981]/20 text-[#6EE7B7] px-2.5 py-1 rounded-full border border-[#10B981]/30">
+                        Kurtarılabilir Kitle
+                      </span>
                     </div>
-
-                    <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3">
-                      <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
-                        Aktif Sadakat
-                      </div>
-                      <div className="text-2xl font-bold text-[#16A36A]">734</div>
-                      <div className="text-[10px] text-[#9CA3AF] font-medium mt-0.5">
-                        Düzenli müşteri
-                      </div>
-                    </div>
-
-                    <div className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-3">
-                      <div className="text-[10px] text-[#9CA3AF] uppercase tracking-wider mb-1">
-                        30+ Gün Gelmeyen
-                      </div>
-                      <div className="text-2xl font-bold text-[#EF4444]">92</div>
-                      <div className="text-[10px] text-[#EF4444] font-medium mt-0.5">
-                        Kayıp riski
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Required Customer List Table */}
-                  <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-3">
-                    <div className="flex items-center justify-between text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-2.5 pb-2 border-b border-white/5">
-                      <span>Müşteri</span>
-                      <span>Sadakat</span>
-                      <span>Son Ziyaret</span>
-                    </div>
-
-                    <div className="space-y-2.5">
-                      {/* Mehmet Yılmaz */}
-                      <div className="flex items-center justify-between text-xs py-1 hover:bg-white/[0.02] rounded px-1 transition-colors">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#16A36A]/20 text-[#16A36A] font-bold text-[10px] flex items-center justify-center">
-                            MY
-                          </div>
-                          <div>
-                            <div className="text-white font-medium text-xs">Mehmet Yılmaz</div>
-                            <div className="text-[10px] text-[#9CA3AF]">Ödüle 2 kaldı</div>
-                          </div>
-                        </div>
-                        <div className="font-mono text-xs font-bold text-[#16A36A]">
-                          8 / 10
-                        </div>
-                        <div className="text-[11px] text-[#9CA3AF]">
-                          4 gün önce
-                        </div>
-                      </div>
-
-                      {/* Ayşe Demir */}
-                      <div className="flex items-center justify-between text-xs py-1 hover:bg-white/[0.02] rounded px-1 transition-colors">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#F59E0B]/20 text-[#F59E0B] font-bold text-[10px] flex items-center justify-center">
-                            AD
-                          </div>
-                          <div>
-                            <div className="text-white font-medium text-xs">Ayşe Demir</div>
-                            <div className="text-[10px] text-[#F59E0B]">Ödül hak edildi 🎁</div>
-                          </div>
-                        </div>
-                        <div className="font-mono text-xs font-bold text-[#F59E0B]">
-                          10 / 10
-                        </div>
-                        <div className="text-[11px] text-white font-medium">
-                          Bugün
-                        </div>
-                      </div>
-
-                      {/* Can Kaya */}
-                      <div className="flex items-center justify-between text-xs py-1 hover:bg-white/[0.02] rounded px-1 transition-colors">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-[#EF4444]/20 text-[#EF4444] font-bold text-[10px] flex items-center justify-center">
-                            CK
-                          </div>
-                          <div>
-                            <div className="text-white font-medium text-xs">Can Kaya</div>
-                            <div className="text-[10px] text-[#EF4444]">Riskli segment</div>
-                          </div>
-                        </div>
-                        <div className="font-mono text-xs font-bold text-[#EF4444]">
-                          2 / 10
-                        </div>
-                        <div className="text-[11px] text-[#EF4444]">
-                          34 gün önce
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Footnote note */}
-                  <div className="mt-3 text-center text-[10px] text-[#6B7280]">
-                    * Bu gerçek veriler değil, DEMO UI örneğidir.
                   </div>
                 </div>
               </div>
 
-              {/* Physical Stand Badge Floating */}
-              <div className="absolute -bottom-5 -left-5 bg-[#0a0a0a] border border-white/10 rounded-2xl p-3 shadow-xl backdrop-blur-md flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#16A36A]/20 border border-[#16A36A]/40 flex items-center justify-center text-[#16A36A]">
-                  <Sparkles size={18} />
-                </div>
+              {/* Physical Stand Floating Badge */}
+              <div className="absolute -bottom-5 -left-3 sm:-left-5 bg-[#0a0a0a]/95 border border-white/15 rounded-2xl p-3.5 shadow-2xl backdrop-blur-md flex items-center gap-3">
+                <RealisticIcon name="nfc" size={32} />
                 <div>
-                  <div className="text-xs font-bold text-white">DOKUN Stand Dahil</div>
-                  <div className="text-[10px] text-[#9CA3AF]">NFC + Dinamik QR Entegre</div>
+                  <div className="text-xs font-bold text-white">DOKUN Akıllı Stand</div>
+                  <div className="text-[10px] text-[#9CA3AF]">NFC + Dinamik QR Çift Çipli</div>
                 </div>
               </div>
             </motion.div>

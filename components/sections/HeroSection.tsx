@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { PhoneMockup, PhoneScreen } from "@/components/ui/PhoneMockup";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ROUTES } from "@/components/config/routes";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -94,108 +95,75 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: Phone mockup */}
+          {/* Right: Realistic Phone Mockup Showcase */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex justify-center lg:justify-end relative"
           >
-            <div className="absolute inset-0 bg-[#16A36A]/8 rounded-full blur-3xl scale-75 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#16A36A]/10 rounded-full blur-3xl scale-90 pointer-events-none" />
 
-            {/* NFC stand */}
-            <div className="absolute -bottom-4 -right-4 lg:-right-8 z-10">
-              <div className="w-20 h-20 bg-[#0a0a0a] rounded-2xl shadow-xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-10 h-10 rounded-xl border-2 border-[#16A36A] mx-auto flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12.5C5 8.36 8.36 5 12.5 5" stroke="#16A36A" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M2 12.5C2 6.7 6.7 2 12.5 2" stroke="#16A36A" strokeWidth="2" strokeLinecap="round"/>
-                      <circle cx="12.5" cy="12.5" r="2.5" fill="#16A36A"/>
-                    </svg>
+            <div className="relative max-w-sm sm:max-w-md w-full">
+              {/* Main Realistic Mockup Image Card */}
+              <div className="relative rounded-[36px] overflow-hidden shadow-2xl border-4 border-white shadow-[#16A36A]/15 bg-white">
+                <img 
+                  src="/images/dokun-phone-mockup.jpg" 
+                  alt="DOKUN Club Gerçekçi Telefon ve Sadakat Deneyimi"
+                  className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500" 
+                />
+                
+                {/* Subtle soft gradient overlay at bottom */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 text-white">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
+                        <RealisticIcon name="coffee" size={22} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-bold">Gerçek Ziyaret Deneyimi</div>
+                        <div className="text-[10px] text-white/80">Telefonunu dokundur, anında kazan</div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold bg-[#10B981] text-white px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      Uygulama İndirmeden
+                    </span>
                   </div>
-                  <div className="text-[8px] text-white font-bold mt-1 tracking-wide">DOKUN</div>
                 </div>
               </div>
+
+              {/* Floating Realistic Badge 1: NFC Touch Status */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                className="absolute -top-4 -left-4 sm:-left-8 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#E5E7EB] flex items-center gap-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#ECFDF5] flex items-center justify-center border border-[#A7F3D0]">
+                  <RealisticIcon name="nfc" size={24} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-[#6B7280] font-medium">Temassız Teknoloji</div>
+                  <div className="text-xs font-bold text-[#111827]">NFC Çipiyle Anında Bağlan</div>
+                </div>
+              </motion.div>
+
+              {/* Floating Realistic Badge 2: Reward Progress */}
+              <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="absolute -bottom-6 -right-3 sm:-right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#E5E7EB] flex items-center gap-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#FEF3C7] flex items-center justify-center border border-[#FDE68A]">
+                  <RealisticIcon name="gift" size={24} />
+                </div>
+                <div>
+                  <div className="text-[10px] text-[#6B7280] font-medium">Sadakat Hedefi</div>
+                  <div className="text-xs font-bold text-[#10B981]">9 / 10 · 1 Kahve Kaldı</div>
+                </div>
+              </motion.div>
             </div>
-
-            <PhoneMockup size="lg">
-              <PhoneScreen>
-                {/* App header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-0.5">
-                      DOKUN CLUB
-                    </div>
-                    <div className="text-base font-bold text-[#0a0a0a]">Merhaba</div>
-                  </div>
-                  <div className="w-8 h-8 bg-[#EEF9F3] rounded-full" />
-                </div>
-
-                <div className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-3">
-                  Sadakat Programların
-                </div>
-
-                <div className="space-y-3">
-                  {/* Coffee */}
-                  <div className="bg-[#F4FBF7] rounded-2xl p-3 border border-[#16A36A]/10">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-xl bg-[#16A36A]/15 flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 rounded-full bg-[#16A36A]" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-[#0a0a0a]">Coffee House</div>
-                          <div className="text-[9px] text-[#9CA3AF]">Ziyaret programı</div>
-                        </div>
-                      </div>
-                      <span className="text-xs font-bold text-[#16A36A]">7 / 10</span>
-                    </div>
-                    <ProgressBar value={70} color="#16A36A" />
-                  </div>
-
-                  {/* Burger */}
-                  <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB]">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-xl bg-[#F3F4F6] flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 rounded-full bg-[#6B7280]" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-[#0a0a0a]">Burger House</div>
-                          <div className="text-[9px] text-[#9CA3AF]">Puan programı</div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-xs font-bold text-[#16A36A]">340</div>
-                        <div className="text-[9px] text-[#9CA3AF]">puan</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Barber */}
-                  <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB]">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-xl bg-[#F3F4F6] flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 rounded-full bg-[#6B7280]" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-[#0a0a0a]">Barber</div>
-                          <div className="text-[9px] text-[#9CA3AF]">Ziyaret programı</div>
-                        </div>
-                      </div>
-                      <span className="text-xs font-bold text-[#16A36A]">2 / 5</span>
-                    </div>
-                    <ProgressBar value={40} color="#16A36A" />
-                  </div>
-                </div>
-
-                <div className="mt-4 text-center">
-                  <div className="text-[10px] text-[#9CA3AF]">3 sadakat programı aktif</div>
-                </div>
-              </PhoneScreen>
-            </PhoneMockup>
           </motion.div>
         </div>
       </div>

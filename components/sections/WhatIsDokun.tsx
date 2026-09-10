@@ -1,26 +1,31 @@
 "use client";
 
-import { Smartphone, Target, Trophy } from "lucide-react";
+import { RealisticIcon, RealisticIconType } from "@/components/ui/RealisticIcon";
 import { StaggerContainer, StaggerItem } from "@/components/ui/SectionWrapper";
 
-const concepts = [
+const concepts: {
+  keyword: string;
+  iconName: RealisticIconType;
+  description: string;
+  detail: string;
+}[] = [
   {
     keyword: "DOKUN",
-    Icon: Smartphone,
+    iconName: "nfc",
     description: "Telefonunu yaklaştır.",
     detail:
       "DOKUN standına telefonunu yaklaştırmak yeterli. Saniyeler içinde sadakat programına bağlanırsın.",
   },
   {
     keyword: "CLUB",
-    Icon: Target,
+    iconName: "user",
     description: "Tek hesabınla işletmelere katıl.",
     detail:
       "DOKUN Club hesabın ile farklı işletmelerin sadakat programlarını tek yerden yönetirsin.",
   },
   {
     keyword: "KAZAN",
-    Icon: Trophy,
+    iconName: "trophy",
     description: "Puanlarını biriktir, ödüllerini kazan.",
     detail:
       "Her alışverişte puan veya ziyaret kazanırsın. Hedefe ulaştığında ödülün seni bekliyor.",
@@ -64,8 +69,8 @@ export function WhatIsDokun() {
             <StaggerItem key={item.keyword}>
               <div className="group relative bg-white border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#16A36A]/30 hover:shadow-lg hover:shadow-[#16A36A]/5 transition-all duration-300 hover:-translate-y-1 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-[#F4FBF7] rounded-2xl flex items-center justify-center group-hover:bg-[#EEF9F3] transition-colors duration-200">
-                    <item.Icon size={18} className="text-[#16A36A]" strokeWidth={1.75} />
+                  <div className="w-12 h-12 bg-[#F4FBF7] rounded-2xl flex items-center justify-center group-hover:bg-[#EEF9F3] transition-colors duration-200 border border-[#16A36A]/15 shadow-xs">
+                    <RealisticIcon name={item.iconName} size={28} />
                   </div>
                   <span className="text-xs font-bold text-[#16A36A] tracking-widest">
                     {item.keyword}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Users, UserCheck, AlertTriangle, Sparkles, Search, ArrowUpRight } from "lucide-react";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 const crmCustomers = [
   { name: "Mehmet Yılmaz", loyalty: "8 / 10", lastVisit: "4 gün önce", status: "Ödüle Yaklaşan", badgeColor: "bg-[#F59E0B]/10 text-[#F59E0B]" },
@@ -62,7 +63,7 @@ export function DashboardPreview() {
                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-[#9CA3AF]">Müşteriler</span>
-                    <Users size={16} className="text-[#16A36A]" />
+                    <RealisticIcon name="user" size={22} />
                   </div>
                   <div className="text-3xl font-bold text-white">1.248</div>
                   <div className="text-xs text-[#16A36A] font-medium mt-1 flex items-center gap-1">
@@ -74,7 +75,7 @@ export function DashboardPreview() {
                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-[#9CA3AF]">Aktif Müşteriler</span>
-                    <UserCheck size={16} className="text-[#10B981]" />
+                    <RealisticIcon name="check" size={22} />
                   </div>
                   <div className="text-3xl font-bold text-[#10B981]">734</div>
                   <div className="text-xs text-[#9CA3AF] font-medium mt-1">
@@ -85,7 +86,7 @@ export function DashboardPreview() {
                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-[#9CA3AF]">30+ Gündür Gelmeyen</span>
-                    <AlertTriangle size={16} className="text-[#EF4444]" />
+                    <RealisticIcon name="target" size={22} />
                   </div>
                   <div className="text-3xl font-bold text-[#EF4444]">92</div>
                   <div className="text-xs text-[#EF4444] font-medium mt-1">
@@ -96,7 +97,7 @@ export function DashboardPreview() {
                 <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-[#9CA3AF]">Ödüle Yaklaşan</span>
-                    <Sparkles size={16} className="text-[#F59E0B]" />
+                    <RealisticIcon name="sparkle" size={22} />
                   </div>
                   <div className="text-3xl font-bold text-[#F59E0B]">128</div>
                   <div className="text-xs text-[#F59E0B] font-medium mt-1">

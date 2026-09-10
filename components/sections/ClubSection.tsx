@@ -8,6 +8,7 @@ import { StaggerContainer, StaggerItem, SectionWrapper } from "@/components/ui/S
 import Link from "next/link";
 import { ROUTES } from "@/components/config/routes";
 import { Check, MapPin, Gift } from "lucide-react";
+import { RealisticIcon } from "@/components/ui/RealisticIcon";
 
 const screens = [
   { id: 0, tab: "Sadakatlerim" },
@@ -28,7 +29,7 @@ function BizDot({ color = "#16A36A" }: { color?: string }) {
 function LoyaltyScreen() {
   return (
     <PhoneScreen>
-      <div className="mb-5">
+      <div className="mb-4">
         <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-1">
           DOKUN CLUB
         </div>
@@ -38,10 +39,10 @@ function LoyaltyScreen() {
         Sadakatlerim
       </div>
       <div className="space-y-3">
-        <div className="bg-[#F4FBF7] rounded-2xl p-3 border border-[#16A36A]/15">
+        <div className="bg-[#F4FBF7] rounded-2xl p-3 border border-[#16A36A]/20 shadow-xs">
           <div className="flex justify-between items-center mb-2">
-            <div className="flex items-center gap-2">
-              <BizDot />
+            <div className="flex items-center gap-2.5">
+              <RealisticIcon name="coffee" size={20} />
               <div>
                 <div className="text-xs font-bold text-[#0a0a0a]">ABC Coffee</div>
                 <div className="text-[9px] text-[#9CA3AF]">2 ziyaret kaldı</div>
@@ -52,12 +53,12 @@ function LoyaltyScreen() {
           <ProgressBar value={80} color="#16A36A" />
         </div>
 
-        <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB]">
+        <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB] shadow-xs">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <BizDot color="#6B7280" />
+            <div className="flex items-center gap-2.5">
+              <RealisticIcon name="store" size={20} />
               <div>
-                <div className="text-xs font-bold text-[#0a0a0a]">Pizza House</div>
+                <div className="text-xs font-bold text-[#0a0a0a]">Artisan Bakery</div>
                 <div className="text-[9px] text-[#9CA3AF]">Puan programı</div>
               </div>
             </div>
@@ -68,12 +69,12 @@ function LoyaltyScreen() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB]">
+        <div className="bg-white rounded-2xl p-3 border border-[#E5E7EB] shadow-xs">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <BizDot color="#6B7280" />
+            <div className="flex items-center gap-2.5">
+              <RealisticIcon name="trophy" size={20} />
               <div>
-                <div className="text-xs font-bold text-[#0a0a0a]">Burger House</div>
+                <div className="text-xs font-bold text-[#0a0a0a]">Craft Burger</div>
                 <div className="text-[9px] text-[#9CA3AF]">Ziyaret programı</div>
               </div>
             </div>
@@ -88,24 +89,24 @@ function LoyaltyScreen() {
 function RewardsScreen() {
   return (
     <PhoneScreen>
-      <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-5">
+      <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-4">
         Ödüllerim
       </div>
 
-      <div className="bg-[#16A36A] rounded-3xl p-4 mb-4">
+      <div className="bg-[#16A36A] rounded-3xl p-4 mb-4 shadow-md shadow-[#16A36A]/20">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 bg-white/20 rounded-xl flex items-center justify-center">
-            <Gift size={14} className="text-white" strokeWidth={1.75} />
+          <div className="w-10 h-10 bg-white/20 rounded-2xl flex items-center justify-center">
+            <RealisticIcon name="gift" size={22} />
           </div>
           <div>
-            <div className="text-[10px] font-bold text-white/70 uppercase tracking-wide">
+            <div className="text-[10px] font-bold text-white/80 uppercase tracking-wide">
               ABC Coffee
             </div>
-            <div className="text-sm font-bold text-white">Ücretsiz Kahve</div>
+            <div className="text-sm font-bold text-white">Ücretsiz Filtre Kahve</div>
           </div>
         </div>
-        <div className="bg-white rounded-2xl py-2.5 text-center">
-          <span className="text-xs font-bold text-[#16A36A]">Ödülü Kullan →</span>
+        <div className="bg-white rounded-2xl py-2.5 text-center shadow-xs">
+          <span className="text-xs font-bold text-[#16A36A]">QR Kod ile Kullan →</span>
         </div>
       </div>
 
