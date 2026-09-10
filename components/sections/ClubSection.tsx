@@ -7,37 +7,23 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { StaggerContainer, StaggerItem, SectionWrapper } from "@/components/ui/SectionWrapper";
 import Link from "next/link";
 import { ROUTES } from "@/components/config/routes";
-import { Check, MapPin, Gift } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { RealisticIcon } from "@/components/ui/RealisticIcon";
-
-const screens = [
-  { id: 0, tab: "Sadakatlerim" },
-  { id: 1, tab: "Ödüllerim" },
-  { id: 2, tab: "Keşfet" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /* Shared business dot indicator */
 function BizDot({ color = "#16A36A" }: { color?: string }) {
-  return (
-    <div
-      className="w-2 h-2 rounded-full flex-shrink-0"
-      style={{ backgroundColor: color }}
-    />
-  );
+  return <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: color }} />;
 }
 
-function LoyaltyScreen() {
+function LoyaltyScreen({ tabLabel }: { tabLabel: string }) {
   return (
     <PhoneScreen>
       <div className="mb-4">
-        <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-1">
-          DOKUN CLUB
-        </div>
+        <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-1">DOKUN CLUB</div>
         <div className="text-base font-bold text-[#0a0a0a]">Merhaba, Can</div>
       </div>
-      <div className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-3">
-        Sadakatlerim
-      </div>
+      <div className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-3">{tabLabel}</div>
       <div className="space-y-3">
         <div className="bg-[#F4FBF7] rounded-2xl p-3 border border-[#16A36A]/20 shadow-xs">
           <div className="flex justify-between items-center mb-2">
@@ -86,12 +72,10 @@ function LoyaltyScreen() {
   );
 }
 
-function RewardsScreen() {
+function RewardsScreen({ tabLabel }: { tabLabel: string }) {
   return (
     <PhoneScreen>
-      <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-4">
-        Ödüllerim
-      </div>
+      <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase mb-4">{tabLabel}</div>
 
       <div className="bg-[#16A36A] rounded-3xl p-4 mb-4 shadow-md shadow-[#16A36A]/20">
         <div className="flex items-center gap-3 mb-3">
@@ -99,9 +83,7 @@ function RewardsScreen() {
             <RealisticIcon name="gift" size={22} />
           </div>
           <div>
-            <div className="text-[10px] font-bold text-white/80 uppercase tracking-wide">
-              ABC Coffee
-            </div>
+            <div className="text-[10px] font-bold text-white/80 uppercase tracking-wide">ABC Coffee</div>
             <div className="text-sm font-bold text-white">Ücretsiz Filtre Kahve</div>
           </div>
         </div>
@@ -110,9 +92,7 @@ function RewardsScreen() {
         </div>
       </div>
 
-      <div className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-3">
-        Yaklaşan Ödüller
-      </div>
+      <div className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-widest mb-3">Yaklaşan Ödüller</div>
       <div className="space-y-2">
         <div className="flex items-center justify-between p-3 bg-[#F9FAFB] rounded-2xl">
           <div className="flex items-center gap-2">
@@ -139,7 +119,7 @@ function RewardsScreen() {
   );
 }
 
-function DiscoverScreen() {
+function DiscoverScreen({ tabLabel }: { tabLabel: string }) {
   const businesses = [
     { name: "Coffee House", campaign: "DOKUN üyesine özel" },
     { name: "Pizza House", campaign: "+2 puan kampanyası" },
@@ -151,9 +131,7 @@ function DiscoverScreen() {
     <PhoneScreen>
       <div className="flex items-center gap-2 mb-1">
         <MapPin size={12} className="text-[#16A36A]" strokeWidth={2} />
-        <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase">
-          Yakındaki İşletmeler
-        </div>
+        <div className="text-[10px] font-bold text-[#16A36A] tracking-widest uppercase">{tabLabel}</div>
       </div>
       <div className="text-[9px] text-[#9CA3AF] mb-4">Demo veriler</div>
       <div className="space-y-2.5">
@@ -177,38 +155,41 @@ function DiscoverScreen() {
 }
 
 export function ClubSection() {
+  const { t } = useLanguage();
+  const c = t.club;
   const [activeScreen, setActiveScreen] = useState(0);
-  const screenComponents = [<LoyaltyScreen key="loyalty" />, <RewardsScreen key="rewards" />, <DiscoverScreen key="discover" />];
+
+  const screens = [
+    { id: 0, tab: c.clubTabLoyalty },
+    { id: 1, tab: c.clubTabRewards },
+    { id: 2, tab: c.clubTabDiscover },
+  ];
+
+  const screenComponents = [
+    <LoyaltyScreen key="loyalty" tabLabel={c.clubTabLoyalty} />,
+    <RewardsScreen key="rewards" tabLabel={c.clubTabRewards} />,
+    <DiscoverScreen key="discover" tabLabel={c.clubTabDiscover} />,
+  ];
 
   return (
-    <section
-      id="dokun-club"
-      className="py-24 lg:py-32 bg-[#0a0a0a] overflow-hidden"
-      aria-labelledby="club-heading"
-    >
+    <section id="dokun-club" className="py-24 lg:py-32 bg-[#0a0a0a] overflow-hidden" aria-labelledby="club-heading">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <StaggerContainer>
             <StaggerItem>
               <span className="inline-block text-xs font-semibold text-[#16A36A] tracking-widest uppercase mb-4">
-                DOKUN Club
+                {c.clubBadge}
               </span>
             </StaggerItem>
             <StaggerItem>
-              <h2
-                id="club-heading"
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5"
-              >
-                Tek hesap.{" "}
-                <span className="text-[#16A36A]">Tüm ödüllerin.</span>
+              <h2 id="club-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-5">
+                {c.clubTitle1}{" "}
+                <span className="text-[#16A36A]">{c.clubTitleHighlight}</span>
               </h2>
             </StaggerItem>
             <StaggerItem>
-              <p className="text-lg text-[#9CA3AF] leading-relaxed mb-8 max-w-md">
-                DOKUN Club&apos;a bir kez katıl. DOKUN kullanan işletmelerdeki
-                sadakat programlarını tek yerden takip et.
-              </p>
+              <p className="text-lg text-[#9CA3AF] leading-relaxed mb-8 max-w-md">{c.clubDesc}</p>
             </StaggerItem>
 
             <StaggerItem>
@@ -234,7 +215,7 @@ export function ClubSection() {
                 href={ROUTES.clubJoin}
                 className="inline-flex items-center justify-center h-14 px-8 bg-[#16A36A] text-white font-semibold text-base rounded-2xl hover:bg-[#12916A] transition-all duration-200 hover:scale-[1.02] shadow-md"
               >
-                Club&apos;a Ücretsiz Katıl
+                {c.clubJoinCta}
               </Link>
             </StaggerItem>
           </StaggerContainer>

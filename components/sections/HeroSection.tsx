@@ -6,8 +6,12 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ROUTES } from "@/components/config/routes";
 import { RealisticIcon } from "@/components/ui/RealisticIcon";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function HeroSection() {
+  const { t } = useLanguage();
+  const c = t.club;
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-white pt-16">
       <div className="absolute inset-0 bg-gradient-to-br from-[#F4FBF7] via-white to-white pointer-events-none" />
@@ -25,7 +29,7 @@ export function HeroSection() {
             >
               <span className="inline-flex items-center gap-2 bg-[#F4FBF7] text-[#16A36A] text-xs font-semibold px-4 py-2 rounded-full border border-[#16A36A]/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#16A36A] animate-pulse" />
-                DOKUN Club — Ücretsiz
+                {c.heroBadge}
               </span>
             </motion.div>
 
@@ -35,11 +39,11 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0a0a0a] leading-[1.1] tracking-tight mb-6"
             >
-              İşletmelerle
+              {c.heroTitle1}
               <br />
-              <span className="text-[#16A36A]">bağ kurmanın</span>
+              <span className="text-[#16A36A]">{c.heroTitleHighlight}</span>
               <br />
-              yeni yolu.
+              {c.heroTitle2}
             </motion.h1>
 
             <motion.p
@@ -48,8 +52,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="text-lg text-[#4B5563] leading-relaxed mb-8 max-w-md"
             >
-              DOKUN Club ile favori işletmelerindeki sadakat programlarına katıl,
-              puanlarını takip et, ödüller kazan ve sana özel fırsatları keşfet.
+              {c.heroDesc}
             </motion.p>
 
             <motion.div
@@ -62,13 +65,13 @@ export function HeroSection() {
                 href={ROUTES.clubJoin}
                 className="inline-flex items-center justify-center h-14 px-8 bg-[#16A36A] text-white font-semibold text-base rounded-2xl hover:bg-[#12916A] active:scale-[0.98] transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.02]"
               >
-                DOKUN Club&apos;a Katıl
+                {c.joinCta}
               </Link>
               <Link
                 href={ROUTES.nasil}
                 className="inline-flex items-center justify-center h-14 px-8 bg-white text-[#0a0a0a] font-semibold text-base rounded-2xl border border-[#E5E7EB] hover:border-[#16A36A]/40 hover:text-[#16A36A] transition-all duration-200 hover:scale-[1.01]"
               >
-                DOKUN&apos;u Keşfet
+                {c.exploreCta}
               </Link>
             </motion.div>
 
@@ -80,17 +83,17 @@ export function HeroSection() {
             >
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#0a0a0a]">1000+</div>
-                <div className="text-xs text-[#9CA3AF] mt-0.5">İşletme</div>
+                <div className="text-xs text-[#9CA3AF] mt-0.5">{c.statBusinesses}</div>
               </div>
               <div className="w-px h-10 bg-[#E5E7EB]" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#0a0a0a]">50K+</div>
-                <div className="text-xs text-[#9CA3AF] mt-0.5">Club Üyesi</div>
+                <div className="text-xs text-[#9CA3AF] mt-0.5">{c.statMembers}</div>
               </div>
               <div className="w-px h-10 bg-[#E5E7EB]" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#0a0a0a]">200K+</div>
-                <div className="text-xs text-[#9CA3AF] mt-0.5">Kazanılan Ödül</div>
+                <div className="text-xs text-[#9CA3AF] mt-0.5">{c.statRewards}</div>
               </div>
             </motion.div>
           </div>
@@ -107,10 +110,10 @@ export function HeroSection() {
             <div className="relative max-w-sm sm:max-w-md w-full">
               {/* Main Realistic Mockup Image Card */}
               <div className="relative rounded-[36px] overflow-hidden shadow-2xl border-4 border-white shadow-[#16A36A]/15 bg-white">
-                <img 
-                  src="/images/dokun-phone-mockup.jpg" 
+                <img
+                  src="/images/dokun-phone-mockup.jpg"
                   alt="DOKUN Club Gerçekçi Telefon ve Sadakat Deneyimi"
-                  className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500" 
+                  className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-500"
                 />
                 
                 {/* Subtle soft gradient overlay at bottom */}
@@ -121,19 +124,19 @@ export function HeroSection() {
                         <RealisticIcon name="coffee" size={22} />
                       </div>
                       <div>
-                        <div className="text-xs font-bold">Gerçek Ziyaret Deneyimi</div>
-                        <div className="text-[10px] text-white/80">Telefonunu dokundur, anında kazan</div>
+                        <div className="text-xs font-bold">{c.realExperience}</div>
+                        <div className="text-[10px] text-white/80">{c.tapInstant}</div>
                       </div>
                     </div>
                     <span className="text-[10px] font-bold bg-[#10B981] text-white px-2.5 py-1 rounded-full uppercase tracking-wider">
-                      Uygulama İndirmeden
+                      {c.noAppNeeded}
                     </span>
                   </div>
                 </div>
               </div>
 
               {/* Floating Realistic Badge 1: NFC Touch Status */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.5 }}
@@ -143,13 +146,13 @@ export function HeroSection() {
                   <RealisticIcon name="nfc" size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#6B7280] font-medium">Temassız Teknoloji</div>
-                  <div className="text-xs font-bold text-[#111827]">NFC Çipiyle Anında Bağlan</div>
+                  <div className="text-[10px] text-[#6B7280] font-medium">{c.nfcTech}</div>
+                  <div className="text-xs font-bold text-[#111827]">{c.nfcInstant}</div>
                 </div>
               </motion.div>
 
               {/* Floating Realistic Badge 2: Reward Progress */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.5 }}
@@ -159,8 +162,8 @@ export function HeroSection() {
                   <RealisticIcon name="gift" size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#6B7280] font-medium">Sadakat Hedefi</div>
-                  <div className="text-xs font-bold text-[#10B981]">9 / 10 · 1 Kahve Kaldı</div>
+                  <div className="text-[10px] text-[#6B7280] font-medium">{c.loyaltyGoal}</div>
+                  <div className="text-xs font-bold text-[#10B981]">{c.oneLeft}</div>
                 </div>
               </motion.div>
             </div>
@@ -175,7 +178,7 @@ export function HeroSection() {
         transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-[#9CA3AF]">Aşağı kaydır</span>
+        <span className="text-xs text-[#9CA3AF]">{c.scrollDown}</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
