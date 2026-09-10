@@ -8,7 +8,7 @@ import { RealisticIcon } from "@/components/ui/RealisticIcon";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function ScenarioSection() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   const timelineSteps = [

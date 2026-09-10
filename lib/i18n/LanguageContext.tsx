@@ -1,61 +1,44 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { translations, Translations } from "./translations";
-import { LanguageCode } from "@/components/ui/CountryFlag";
 
-interface LanguageContextType {
+export type LanguageCode = "tr" | "en" | "de";
+
+interface LanguageStore {
   language: LanguageCode;
-  setLanguage: (lang: LanguageCode) => void;
   t: Translations;
+  setLanguage: (lang: LanguageCode) => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<LanguageCode>("tr");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("dokun_lang") as LanguageCode;
-      if (saved && (saved === "tr" || saved === "en" || saved === "de")) {
-        setLanguageState(saved);
-      }
-    } catch {
-      // ignore
-    }
-    setMounted(true);
-  }, []);
-
-  const setLanguage = (lang: LanguageCode) => {
-    setLanguageState(lang);
-    try {
-      localStorage.setItem("dokun_lang", lang);
-      document.documentElement.lang = lang;
-    } catch {
-      // ignore
-    }
-  };
-
-  const t = translations[language] as unknown as Translations;
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-}
-
-export function useLanguage() {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    // Fallback if rendered outside provider
-    return {
-      language: "tr" as LanguageCode,
-      setLanguage: () => {},
+export const useLanguage = create<LanguageStore>()(
+  persist(
+    (set) => ({
+      language: "tr",
       t: translations.tr as unknown as Translations,
-    };
-  }
-  return context;
-}
+      setLanguage: (lang: LanguageCode) => {
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = lang;
+        }
+        set({
+          language: lang,
+          t: translations[lang] as unknown as Translations,
+        });
+      },
+    }),
+    {
+      name: "dokun_lang",
+      partialize: (state) => ({ language: state.language }),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          const lang = state.language;
+          state.t = translations[lang] as unknown as Translations;
+          if (typeof document !== "undefined") {
+            document.documentElement.lang = lang;
+          }
+        }
+      },
+    }
+  )
+);

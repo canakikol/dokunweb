@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   return (

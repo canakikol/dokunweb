@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function BusinessSection() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   const features = [

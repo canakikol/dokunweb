@@ -5,7 +5,7 @@ import { StaggerContainer, StaggerItem } from "@/components/ui/SectionWrapper";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function WhatIsDokun() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   const concepts: { keyword: string; iconName: RealisticIconType; description: string; detail: string }[] = [

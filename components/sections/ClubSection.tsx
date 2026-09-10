@@ -155,7 +155,7 @@ function DiscoverScreen({ tabLabel }: { tabLabel: string }) {
 }
 
 export function ClubSection() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
   const [activeScreen, setActiveScreen] = useState(0);
 

@@ -6,7 +6,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function FinalCTA() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   return (

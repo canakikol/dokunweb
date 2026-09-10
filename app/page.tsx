@@ -15,7 +15,7 @@ import { LanguageSelector } from "@/components/ui/LanguageSelector";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function HomePage() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
 
   return (
     <div className="min-h-screen bg-[#FBFBFB] text-[#111827] flex flex-col justify-between selection:bg-[#16A36A]/20 selection:text-[#16A36A] relative overflow-hidden">

@@ -3,8 +3,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Check } from "lucide-react";
-import { CountryFlag, LanguageCode } from "./CountryFlag";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { CountryFlag } from "./CountryFlag";
+import { useLanguage, LanguageCode } from "@/lib/i18n/LanguageContext";
 
 const languages: { code: LanguageCode; label: string; nativeName: string }[] = [
   { code: "tr", label: "Türkçe", nativeName: "TR" },
@@ -21,7 +21,8 @@ export function LanguageSelector({
   variant = "pill",
   className = "",
 }: LanguageSelectorProps) {
-  const { language, setLanguage } = useLanguage();
+  const language = useLanguage((s) => s.language);
+  const setLanguage = useLanguage((s) => s.setLanguage);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -29,10 +30,7 @@ export function LanguageSelector({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -60,9 +58,9 @@ export function LanguageSelector({
         <span className="font-bold tracking-wide">{currentLang.nativeName}</span>
         <ChevronDown
           size={13}
-          className={`transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          } ${isDark ? "text-white/60" : "text-[#6B7280]"}`}
+          className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""} ${
+            isDark ? "text-white/60" : "text-[#6B7280]"
+          }`}
         />
       </button>
 
@@ -81,7 +79,7 @@ export function LanguageSelector({
             }`}
           >
             <div className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 text-[#9CA3AF]">
-              Dil Seçimi
+              {language === "de" ? "Sprache" : language === "en" ? "Language" : "Dil"}
             </div>
             {languages.map((lang) => {
               const isSelected = language === lang.code;

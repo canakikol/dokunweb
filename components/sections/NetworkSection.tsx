@@ -13,7 +13,7 @@ const demoBusinesses = [
 ];
 
 export function NetworkSection() {
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
   const c = t.club;
 
   return (

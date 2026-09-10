@@ -11,7 +11,7 @@ import { useLanguage } from "@/lib/i18n/LanguageContext";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t } = useLanguage();
+  const t = useLanguage((s) => s.t);
 
   const navLinks = [
     { label: t.nav.whatIs, href: ROUTES.nedir },
